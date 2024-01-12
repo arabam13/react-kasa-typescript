@@ -20,7 +20,7 @@ export const Home = () => {
         <img loading="lazy" src="/images/landing-image.jpg" className="img-2" />
         <p>Chez vous, partout et ailleurs</p>
       </section>
-      <main className="container-images">
+      <main className="main-content">
         {/* <Link to="/" className="card-link"> */}
         {results.map((res, index) => (
           <a href="#" className="card-link" key={res.cover + index}>

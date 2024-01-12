@@ -2,11 +2,27 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  // color
+  --primary-color: #ff6060;
+  --black: #000;
+  --white: #fff;
+  --gray: #f2f2f2;
+  --color-start: rgba(255, 255, 255, 0);
+  --color-end: rgba(0, 0, 0, 0.5);
+
+  // font
+  --font-minimum: 12px;
+  --font-base: 16px;
+  --font-base-medium: 18px;
+  --font-medium: 24px;
+  --font-maximum: 48px;
+}
 
 body {
   background-color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+  font-size: var(--font-base);
   line-height: 1.5;
   color: #333333;
   min-height: 100vh;

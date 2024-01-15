@@ -230,9 +230,30 @@
             height: 15px;
           }
         }
-
+        // create animate and keyframes bloc css
+        @mixin keyframes($name) {
+          @keyframes #{$name} {
+            @content;
+          }
+        }
+        @mixin animate($animation, $duration, $method, $times) {
+          animation: $animation $duration $method $times;
+        }
+        //manage hidden and visible
         .hidden {
           display: none;
+          // @include keyframes(fadeOut) {
+          //   100% {
+          //     opacity: 1;
+          //   }
+          //   50% {
+          //     opacity: 0.5;
+          //   }
+          //   0% {
+          //     opacity: 0;
+          //   }
+          // }
+          // @include animate(fadeOut, 1s, linear, 1);
         }
         .visible {
           display: flex;
@@ -246,6 +267,18 @@
           ul {
             padding: 0;
           }
+          @include keyframes(fadeIn) {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          @include animate(fadeIn, 1s, linear, 1);
         }
       }
     }

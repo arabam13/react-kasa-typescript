@@ -5,10 +5,13 @@
   background-color: var(--white);
   padding-top: 20px;
   margin: 0 20px;
+  min-height: calc(100vh - 199px);
 
   @media (min-width: 768px) {
     padding-top: 45px;
+    min-height: calc(100vh - 309px);
   }
+
   @media (min-width: 1024px) {
     margin: 0 50px;
     max-width: 1240px;
@@ -186,102 +189,376 @@
       margin-top: 43px;
       border-radius: 25px;
       padding: 56px 50px;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 50px 60px;
     }
   }
-  // @media (min-width: 1024px) {
-  //   .main-content {
-  //     max-width: 1276px;
-  //   }
-  // }
 
   //about
   .main-content-about {
     display: flex;
-    width: 100%;
     flex-direction: column;
-    .about {
+    color: var(--primary-color);
+    width: 100%;
+    margin-top: 15px;
+    padding-inline: 80px;
+
+    .collapse {
       display: flex;
-      color: var(--primary-color);
       flex-direction: column;
-      padding-inline: 80px;
-      margin-top: 15px;
 
-      .collapse {
+      .collapse__header {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 20px;
+        height: 28px;
+        background-color: var(--primary-color);
+        color: var(--white);
+        font-size: 18px;
+        padding: 20px;
+        border-radius: 5px;
+        align-items: center;
+        cursor: pointer;
 
-        .collapse__header {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 20px;
-          height: 28px;
-          background-color: var(--primary-color);
-          color: var(--white);
-          font-size: 18px;
-          padding: 20px;
+        .chevronValue img {
+          width: 25px;
+          height: 15px;
+        }
+      }
+      // create animate and keyframes bloc css
+      @mixin keyframes($name) {
+        @keyframes #{$name} {
+          @content;
+        }
+      }
+      @mixin animate($animation, $duration, $method, $times) {
+        animation: $animation $duration $method $times;
+      }
+      //manage hidden and visible
+      .hidden {
+        display: none;
+      }
+      .visible {
+        display: flex;
+        padding: 25px 28px 20px 20px;
+        gap: 10px;
+        border-radius: 0 0 5px 5px;
+        background: var(--gray);
+        color: var(--primary-color);
+        line-height: 142.6%;
+
+        ul {
+          padding: 0;
+        }
+        @include keyframes(fadeIn) {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        @include animate(fadeIn, 1s, linear, 1);
+      }
+    }
+  }
+
+  // ************ Error page ***********
+  .error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 139px;
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      font-size: 288px;
+      font-weight: 700;
+      line-height: 142.6%;
+      width: 597px;
+      height: 263px;
+    }
+    .paragraph1 {
+      color: var(--primary-color);
+      font-size: var(--font-medium-maximum);
+      line-height: 142.6%;
+    }
+    .paragraph2 {
+      color: var(--primary-color);
+      font-size: var(--font-base-medium);
+      line-height: 142.6%; /* 25.668px */
+      text-decoration-line: underline;
+    }
+  }
+
+  //carousel
+  .carousel {
+    position: relative;
+    height: 255px;
+    width: 100%;
+    margin-top: 27px;
+    color: var(--black);
+
+    .classImage {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+
+    .index-counter {
+      color: var(--white);
+      .classChevronLeft {
+        position: absolute;
+        height: 30px;
+        top: 50%;
+        left: 10px;
+        cursor: pointer;
+      }
+
+      .classChevronRight {
+        position: absolute;
+        height: 30px;
+        top: 50%;
+        left: 10px;
+        cursor: pointer;
+        left: calc(100% - 30px);
+      }
+    }
+
+    .div-counter {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .carousel {
+      height: 415px;
+
+      .index-counter {
+        .classChevronLeft {
+          height: 79.2px;
+        }
+
+        .classChevronRight {
+          height: 79.2px;
+          left: calc(100% - 60px);
+        }
+      }
+
+      .div-counter {
+        display: block;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        color: var(--white);
+      }
+    }
+  }
+
+  //Property info
+  .property {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 100%;
+    gap: 24px;
+
+    .property-description {
+      display: flex;
+      flex-direction: column;
+      color: var(--primary-color);
+      font-weight: 500;
+      line-height: 142.6%; /* 25.668px */
+
+      .property-title {
+        font-size: var(--font-base-medium);
+      }
+
+      .property-location {
+        font-size: var(--font-minimum-base);
+      }
+
+      .property-tags {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+
+        .tags {
           border-radius: 5px;
-          align-items: center;
-          cursor: pointer;
-
-          .chevronValue img {
-            width: 25px;
-            height: 15px;
-          }
-        }
-        // create animate and keyframes bloc css
-        @mixin keyframes($name) {
-          @keyframes #{$name} {
-            @content;
-          }
-        }
-        @mixin animate($animation, $duration, $method, $times) {
-          animation: $animation $duration $method $times;
-        }
-        //manage hidden and visible
-        .hidden {
-          display: none;
-          // @include keyframes(fadeOut) {
-          //   100% {
-          //     opacity: 1;
-          //   }
-          //   50% {
-          //     opacity: 0.5;
-          //   }
-          //   0% {
-          //     opacity: 0;
-          //   }
-          // }
-          // @include animate(fadeOut, 1s, linear, 1);
-        }
-        .visible {
-          display: flex;
-          padding: 25px 28px 20px 20px;
-          gap: 10px;
-          border-radius: 0 0 5px 5px;
-          background: var(--gray);
-          color: var(--primary-color);
-          line-height: 142.6%;
-
-          ul {
-            padding: 0;
-          }
-          @include keyframes(fadeIn) {
-            0% {
-              opacity: 0;
-            }
-            50% {
-              opacity: 0.5;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-          @include animate(fadeIn, 1s, linear, 1);
+          padding: 5px 10px;
+          color: #fff;
+          background-color: var(--primary-color);
+          text-align: center;
+          font-size: var(--font-minimum-low);
         }
       }
     }
+
+    .property-stars-creator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .property-stars {
+        .span1 {
+          color: var(--primary-color);
+        }
+
+        .span2 {
+          color: #e3e3e3;
+        }
+      }
+
+      .property-creator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10.5px;
+
+        p {
+          color: var(--primary-color);
+          font-size: var(--font-minimum);
+          font-weight: 500;
+          line-height: 142.6%;
+        }
+
+        img {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .property {
+      flex-direction: row;
+      justify-content: space-between;
+
+      .property-description {
+        // gap: 15px;
+        .property-title {
+          font-size: var(--font-medium-maximum);
+          line-height: 142.6%; /* 51.336px */
+        }
+
+        .property-location {
+          font-size: var(--font-base-medium);
+        }
+
+        .property-tags {
+          .tags {
+            font-size: var(--font-minimum-base);
+          }
+        }
+      }
+
+      .property-stars-creator {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 10px;
+
+        .property-creator {
+          p {
+            font-size: var(--font-base-medium);
+          }
+        }
+      }
+    }
+  }
+
+  //Property Collapse
+  .property-collapse {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--primary-color);
+    width: 100%;
+    margin-top: 24px;
+
+    .collapse {
+      display: flex;
+      flex-direction: column;
+
+      .collapse__header {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        height: 28px;
+        background-color: var(--primary-color);
+        color: var(--white);
+        font-size: 18px;
+        padding: 20px;
+        border-radius: 5px;
+        align-items: center;
+        cursor: pointer;
+
+        .chevronValue img {
+          width: 25px;
+          height: 15px;
+        }
+      }
+      // create animate and keyframes bloc css
+      @mixin keyframes($name) {
+        @keyframes #{$name} {
+          @content;
+        }
+      }
+      @mixin animate($animation, $duration, $method, $times) {
+        animation: $animation $duration $method $times;
+      }
+      //manage hidden and visible
+      .hidden {
+        display: none;
+      }
+      .visible {
+        display: flex;
+        padding: 25px 28px 20px 20px;
+        gap: 10px;
+        border-radius: 0 0 5px 5px;
+        background: var(--gray);
+        color: var(--primary-color);
+        line-height: 142.6%;
+
+        ul {
+          padding: 0;
+        }
+        @include keyframes(fadeIn) {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        @include animate(fadeIn, 1s, linear, 1);
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .property-collapse {
+      flex-direction: row;
+      gap: 75px;
+      justify-content: space-between;
+      .collapse {
+        width: 100%;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .continer {
+    padding-top: 45px;
+    min-height: calc(100vh - 199px);
   }
 }
 

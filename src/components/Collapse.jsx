@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import chevronUp from '/images/ChevronUp.png';
 import chevronDown from '/images/ChevronDown.png';
-// import "../Styles/Collapse.css"
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 const Collapse = ({ title, content }) => {
   const [showContent, setShowContent] = useState(false);
 
@@ -28,6 +27,11 @@ const Collapse = ({ title, content }) => {
       </div>
     </div>
   );
+};
+
+Collapse.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.node.isRequired,
 };
 
 export default Collapse;

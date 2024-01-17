@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 export const Header = () => {
   return (
     <header className="header">
-      <img loading="lazy" src="/images/LOGO.jpg" className="img" />
+      <Link to="/">
+        <img loading="lazy" src="/images/LOGO.jpg" className="img" />
+      </Link>
       <nav>
         <ul className="nav-menu">
           <Link to="/">

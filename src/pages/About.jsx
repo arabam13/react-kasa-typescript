@@ -16,12 +16,10 @@ export const About = () => {
         {/* <p>Chez vous, partout et ailleurs</p> */}
       </section>
       <div className="main-content-about">
-        <div className="about">
-          <Collapse title="Fiabilité" content={fiabilite} />
-          <Collapse title="Respect" content={respect} />
-          <Collapse title="Service" content={service} />
-          <Collapse title="Sécurite" content={securite} />
-        </div>
+        <Collapse title="Fiabilité" content={fiabilite} />
+        <Collapse title="Respect" content={respect} />
+        <Collapse title="Service" content={service} />
+        <Collapse title="Sécurite" content={securite} />
       </div>
     </>
   );

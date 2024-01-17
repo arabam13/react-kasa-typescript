@@ -1,19 +1,18 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { PropertiesContext } from '../services/RestaurantsContext.jsx';
 
 export const Home = () => {
-  const [results, setResults] = useState([]);
-  // console.log(results);
+  const { properties, isLoading, error } = useContext(PropertiesContext);
 
-  const fetchData = async () => {
-    const data = await fetch('/logements.json');
-    const dataJson = await data.json();
-    setResults(dataJson);
-  };
+  if (isLoading) {
+    return <div>Chargement en cours...</div>;
+  }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <>
       <section className="image-presentation">
@@ -22,13 +21,20 @@ export const Home = () => {
       </section>
       <main className="main-content">
         {/* <Link to="/" className="card-link"> */}
-        {results.map((res, index) => (
-          <a href="#" className="card-link" key={res.cover + index}>
+        {properties.map((res, index) => (
+          <Link
+            to={`/property/${res.id}`}
+            className="card-link"
+            key={res.cover + index}
+            state={{ property: res }}
+          >
+            {/* <a href="#" className="card-link" key={res.cover + index}> */}
             <article className="card">
               <img src={res.cover} alt="" className="card-image" />
               <div className="card-text">{res.title}</div>
             </article>
-          </a>
+            {/* </a> */}
+          </Link>
         ))}
         {/* </Link> */}
       </main>

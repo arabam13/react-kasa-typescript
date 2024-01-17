@@ -528,6 +528,10 @@
 
         ul {
           padding: 0;
+
+          li {
+            list-style-type: none;
+          }
         }
         @include keyframes(fadeIn) {
           0% {

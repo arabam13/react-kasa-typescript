@@ -6,7 +6,7 @@ export const Home = () => {
   const { properties, isLoading, error } = useContext(PropertiesContext);
 
   if (isLoading) {
-    return <div>Chargement en cours...</div>;
+    return <span className="loader"></span>;
   }
 
   if (error) {
@@ -28,15 +28,12 @@ export const Home = () => {
             key={res.cover + index}
             state={{ property: res }}
           >
-            {/* <a href="#" className="card-link" key={res.cover + index}> */}
             <article className="card">
               <img src={res.cover} alt="" className="card-image" />
               <div className="card-text">{res.title}</div>
             </article>
-            {/* </a> */}
           </Link>
         ))}
-        {/* </Link> */}
       </main>
     </>
   );

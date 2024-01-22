@@ -234,6 +234,17 @@
       @mixin animate($animation, $duration, $method, $times) {
         animation: $animation $duration $method $times;
       }
+      @mixin animate_delay(
+        $animation,
+        $duration,
+        $method,
+        $delay,
+        $times,
+        $direction,
+        $mode
+      ) {
+        animation: $animation $duration $method $delay $times $direction $mode;
+      }
       //manage hidden and visible
       .hidden {
         display: none;
@@ -247,21 +258,45 @@
         color: var(--primary-color);
         line-height: 142.6%;
 
-        ul {
+        .listContent {
           padding: 0;
+          opacity: 0;
+          @include animate_delay(
+            fadeInUL,
+            300ms,
+            linear,
+            300ms,
+            1,
+            normal,
+            forwards
+          );
+          @include keyframes(fadeInUL) {
+            0% {
+              transform: translateY(-20px);
+              opacity: 0;
+            }
+            50% {
+              transform: translateY(-10px);
+              opacity: 0.5;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
         }
         @include keyframes(fadeIn) {
           0% {
-            opacity: 0;
+            transform: translateY(-20px);
           }
           50% {
-            opacity: 0.5;
+            transform: translateY(-10px);
           }
           100% {
-            opacity: 1;
+            transform: translateY(0);
           }
         }
-        @include animate(fadeIn, 1s, linear, 1);
+        @include animate(fadeIn, 300ms, linear, 1);
       }
     }
   }
@@ -517,6 +552,17 @@
       @mixin animate($animation, $duration, $method, $times) {
         animation: $animation $duration $method $times;
       }
+      @mixin animate_delay(
+        $animation,
+        $duration,
+        $method,
+        $delay,
+        $times,
+        $direction,
+        $mode
+      ) {
+        animation: $animation $duration $method $delay $times $direction $mode;
+      }
       //manage hidden and visible
       .hidden {
         display: none;
@@ -530,25 +576,48 @@
         color: var(--primary-color);
         line-height: 142.6%;
 
-        ul {
+        .listContent {
           padding: 0;
-
+          opacity: 0;
+          @include animate_delay(
+            fadeInUL,
+            300ms,
+            linear,
+            300ms,
+            1,
+            normal,
+            forwards
+          );
+          @include keyframes(fadeInUL) {
+            0% {
+              transform: translateY(-20px);
+              opacity: 0;
+            }
+            50% {
+              transform: translateY(-10px);
+              opacity: 0.5;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
           li {
             list-style-type: none;
           }
         }
         @include keyframes(fadeIn) {
           0% {
-            opacity: 0;
+            transform: translateY(-20px);
           }
           50% {
-            opacity: 0.5;
+            transform: translateY(-10px);
           }
           100% {
-            opacity: 1;
+            transform: translateY(0);
           }
         }
-        @include animate(fadeIn, 1s, linear, 1);
+        @include animate(fadeIn, 300ms, linear, 1);
       }
     }
   }

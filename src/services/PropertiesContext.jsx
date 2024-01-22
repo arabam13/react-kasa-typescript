@@ -13,24 +13,24 @@ export const PropertiesContextProvider = ({ children }) => {
     setError(null);
     setProperties([]);
 
-    // setTimeout(async () => {
-    await fetch('/logements.json')
-      .then((data) => data.json())
-      .then((results) => {
-        setError(null);
-        setIsLoading(false);
-        setProperties(results);
-      })
-      .catch((err) => {
-        setProperties([]);
-        setIsLoading(false);
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError(err);
-        }
-      });
-    // }, 2000);
+    setTimeout(async () => {
+      await fetch('/logements.json')
+        .then((data) => data.json())
+        .then((results) => {
+          setError(null);
+          setIsLoading(false);
+          setProperties(results);
+        })
+        .catch((err) => {
+          setProperties([]);
+          setIsLoading(false);
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError(err);
+          }
+        });
+    }, 2000);
   };
 
   useEffect(() => {

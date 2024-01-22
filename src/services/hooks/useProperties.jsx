@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PropertiesContext } from '../RestaurantsContext.jsx';
+import { PropertiesContext } from '../PropertiesContext';
 
 const useProperties = () => {
   const propertiesContext = useContext(PropertiesContext);

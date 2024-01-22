@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { PropertiesContext } from '../services/RestaurantsContext.jsx';
+import { PropertiesContext } from '../services/PropertiesContext';
 
 export const Home = () => {
   const { properties, isLoading, error } = useContext(PropertiesContext);

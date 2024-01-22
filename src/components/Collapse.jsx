@@ -23,7 +23,7 @@ const Collapse = ({ title, content }) => {
       </div>
 
       <div className={collapseContent}>
-        <ul>{content}</ul>
+        <ul className="listContent">{content}</ul>
       </div>
     </div>
   );

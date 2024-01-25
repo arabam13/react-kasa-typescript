@@ -1,7 +1,7 @@
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import Collapse from '../components/Collapse';
-import Carousel from '../components/Carousel.jsx';
 import { useEffect } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import Carousel from '../components/Carousel.jsx';
+import Collapse from '../components/Collapse.jsx';
 
 const Property = () => {
   const arrayStars = [1, 2, 3, 4, 5];
@@ -46,11 +46,11 @@ const Property = () => {
           <div className="property-stars-creator">
             <div className="property-stars">
               {arrayStars.map((element) => {
-                const nbreEtoiles = parseInt(property.rating);
+                const rating = parseInt(property.rating);
                 return (
                   <span
                     key={'star-' + element}
-                    className={element <= nbreEtoiles ? 'span1' : 'span2'}
+                    className={element <= rating ? 'span1' : 'span2'}
                   >
                     ★{' '}
                   </span>

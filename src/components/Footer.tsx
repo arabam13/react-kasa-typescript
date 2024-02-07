@@ -7,7 +7,7 @@ export const Footer = () => {
           src="/images/LOGO-FOOTER.png"
           alt="image footer"
         ></img>
-        <div className="footer-text">© 2020 Kasa. All rights reserved</div>
+        <div className="footer-text">© 2024 Kasa. All rights reserved</div>
       </div>
     </footer>
   );

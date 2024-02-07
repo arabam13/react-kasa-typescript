@@ -1,9 +1,14 @@
+// import PropTypes from 'prop-types';
+import { PropertyType } from '@/utils/types.ts';
 import { useState } from 'react';
 import ChevronLeft from '/images/ChevronLeft.png';
 import ChevronRight from '/images/ChevronRight.png';
-import PropTypes from 'prop-types';
 
-function Carousel({ pictures }) {
+type CarouselProps = {
+  pictures: PropertyType['pictures'];
+};
+// export default function Carousel({ pictures }: CarouselProps) {
+export const Carousel = ({ pictures }: CarouselProps) => {
   const [index, setIndex] = useState(0);
   const totalPictures = pictures.length - 1;
 
@@ -23,20 +28,20 @@ function Carousel({ pictures }) {
       {/* if more than one picture */}
       {totalPictures > 0 && (
         <>
-          <div className="index-counter" onClick={() => setIndex(index - 1)}>
+          <button className="index-counter" data-testid='chevronLeft' onClick={() => setIndex(index - 1)}>
             <img
               src={ChevronLeft}
               className="classChevronLeft"
               alt={'Left arrow to change picture ' + index}
             />
-          </div>
-          <div className="index-counter" onClick={() => setIndex(index + 1)}>
+          </button>
+          <button className="index-counter" data-testid='chevronRight' onClick={() => setIndex(index + 1)}>
             <img
               src={ChevronRight}
               className="classChevronRight"
               alt={'Right arrow to change picture ' + index}
             />
-          </div>
+          </button>
         </>
       )}
       {totalPictures > 0 && (
@@ -48,9 +53,3 @@ function Carousel({ pictures }) {
     </section>
   );
 }
-
-Carousel.propTypes = {
-  pictures: PropTypes.array.isRequired,
-};
-
-export default Carousel;

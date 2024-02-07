@@ -1,8 +1,12 @@
+import { Carousel } from '@/components/Carousel';
+import Collapse from '@/components/Collapse';
+import { PropertyType } from '@/utils/types.ts';
 import { useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import Carousel from '../components/Carousel.jsx';
-import Collapse from '../components/Collapse.jsx';
 
+type locationStateType = {
+  property: PropertyType;
+};
 const Property = () => {
   const arrayStars = [1, 2, 3, 4, 5];
   const { id } = useParams();
@@ -17,8 +21,8 @@ const Property = () => {
   }, [location.state, id, navigate]);
 
   if (location.state !== null) {
-    const { property } = location.state;
-    const equipements = property?.equipments.map((element, index) => (
+    const { property } = location.state as locationStateType;
+    const equipements = property.equipments.map((element, index) => (
       <li className="description-content" key={'equip-' + index.toString()}>
         {element}
       </li>

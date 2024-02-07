@@ -1,10 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
-import './App.scss';
-import RootLayout from './RootLayout.jsx';
-import { Home } from './pages/Home.jsx';
-import { About } from './pages/About.jsx';
-import Error from './components/Error.jsx';
-import Property from './pages/Property.jsx';
+import '@/App.scss';
+import RootLayout from '@/RootLayout';
+import About  from '@/pages/About';
+import Error from '@/pages/Error';
+import Home from '@/pages/Home';
+import Property from '@/pages/Property';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (

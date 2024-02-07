@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <header className="header">
       <Link to="/">
-        <img loading="lazy" src="/images/LOGO.jpg" className="img" />
+        <img loading="lazy" src="/images/LOGO.jpg" className="img"  alt="logo"/>
       </Link>
       <nav>
         <ul className="nav-menu">

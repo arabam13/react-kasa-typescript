@@ -1,9 +1,14 @@
+import { PropertyType } from '@/utils/types.ts';
 import { useState } from 'react';
-import chevronUp from '/images/ChevronUp.png';
 import chevronDown from '/images/ChevronDown.png';
-import PropTypes from 'prop-types';
+import chevronUp from '/images/ChevronUp.png';
 
-const Collapse = ({ title, content }) => {
+type CollapseType = {
+  title: PropertyType['title'];
+  content: PropertyType['description'] | JSX.Element[];
+};
+
+export default function Collapse({ title, content }: CollapseType) {
   const [showContent, setShowContent] = useState(false);
 
   const handleShowContent = () => {
@@ -17,21 +22,14 @@ const Collapse = ({ title, content }) => {
     <div className="collapse">
       <div className="collapse__header" onClick={handleShowContent}>
         <span>{title}</span>
-        <div className="chevronValue">
+        <div className="chevronValue" data-testid="chevron">
           <img src={collapseChevron} alt={title} />
         </div>
       </div>
 
-      <div className={collapseContent}>
+      <div className={collapseContent} data-testid="stateCollapse">
         <ul className="listContent">{content}</ul>
       </div>
     </div>
   );
-};
-
-Collapse.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
-};
-
-export default Collapse;
+}
